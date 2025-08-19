@@ -1,4 +1,4 @@
-## @towncryerio/towncryer-js-api-client@1.0
+## @towncryerio/towncryer-js-api-client@<version>
 
 This generator creates TypeScript/JavaScript client that utilizes [axios](https://github.com/axios/axios). The generated Node module can be used in the following environments:
 
@@ -36,7 +36,7 @@ navigate to the folder of your consuming project and run one of the following co
 _published:_
 
 ```
-npm install @towncryer-dev/towncryer-sdk-api-client@1.0 --save
+npm install @towncryerio/towncryer-js-api-client@<version> --save
 ```
 
 _unPublished (not recommended):_
