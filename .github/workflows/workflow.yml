@@ -68,31 +68,8 @@ jobs:
             git push
           fi
 
-  build:
-    needs: version-and-tag
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '18'
-      
-      - name: Install dependencies
-        run: npm ci
-      
-      - name: Build
-        run: npm run build && npm run build-esm
-      
-      - name: Upload build artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: dist
-          path: dist/
-
   publish:
-    needs: [version-and-tag, build]
+    needs: version-and-tag
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -103,11 +80,8 @@ jobs:
           node-version: '18'
           registry-url: 'https://registry.npmjs.org/'
               
-      - name: Download build artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: dist
-          path: dist/
+      - name: Install dependencies
+        run: npm ci
               
       - name: Update package version
         run: npm version ${{ needs.version-and-tag.outputs.version }} --no-git-tag-version
