@@ -1,0 +1,7 @@
+# 1.0.0 (2025-08-19)
+
+
+### Features
+
+* initial commit ([4652af4](https://github.com/towncryerIO/towncryer-js-api-client/commit/4652af42d17763e9d0cc915c065aa66aa0caba22))
+* pipeline setup ([17eb230](https://github.com/towncryerIO/towncryer-js-api-client/commit/17eb23057c1f153fd5e41014a4e29ca61f37a854))
