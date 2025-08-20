@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/towncryerIO/towncryer-js-api-client/compare/v1.0.0...v1.1.0) (2025-08-20)
+
+
+### Features
+
+* cdn build setup ([#2](https://github.com/towncryerIO/towncryer-js-api-client/issues/2)) ([d3bc8b9](https://github.com/towncryerIO/towncryer-js-api-client/commit/d3bc8b9ffdac10fefb5e9bfde3304309177484fd))
+
 # 1.0.0 (2025-08-19)
 
 
