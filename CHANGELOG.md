@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/towncryerIO/towncryer-js-api-client/compare/v1.1.0...v1.2.0) (2025-08-24)
+
+
+### Features
+
+* api key login refresh token ([#3](https://github.com/towncryerIO/towncryer-js-api-client/issues/3)) ([202e070](https://github.com/towncryerIO/towncryer-js-api-client/commit/202e07058ff4649a29af61c9aabf78de59e38961))
+
 # [1.1.0](https://github.com/towncryerIO/towncryer-js-api-client/compare/v1.0.0...v1.1.0) (2025-08-20)
 
 
