@@ -1,6 +1,6 @@
 {
   "name": "@towncryerio/towncryer-js-api-client",
-  "version": "1.0.0",
+  "version": "1.0.0-99e0770",
   "description": "OpenAPI client for @towncryerio/towncryer-js-api-client",
   "author": "OpenAPI-Generator Contributors",
   "repository": {
