@@ -451,7 +451,7 @@ export interface RequestsClientAppLoginPayload {
      * @type {string}
      * @memberof RequestsClientAppLoginPayload
      */
-    'apiKey'?: string;
+    'apiKey': string;
 }
 /**
  * 
@@ -782,6 +782,42 @@ export const AuthApiAxiosParamCreator = function (configuration?: Configuration)
             };
         },
         /**
+         * Refreshes a client app token
+         * @summary Refresh Client App Token
+         * @param {RefreshTokenRequest} request Refresh token request
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        refreshClientAppToken: async (request: RefreshTokenRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'request' is not null or undefined
+            assertParamExists('refreshClientAppToken', 'request', request)
+            const localVarPath = `/auth/client/refresh-token`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(request, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
          * Refreshes a short lived token
          * @summary Refresh Short Lived Token
          * @param {RefreshTokenRequest} request Refresh token request
@@ -854,6 +890,19 @@ export const AuthApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
+         * Refreshes a client app token
+         * @summary Refresh Client App Token
+         * @param {RefreshTokenRequest} request Refresh token request
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async refreshClientAppToken(request: RefreshTokenRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<APICredentialsLoginResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.refreshClientAppToken(request, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['AuthApi.refreshClientAppToken']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
          * Refreshes a short lived token
          * @summary Refresh Short Lived Token
          * @param {RefreshTokenRequest} request Refresh token request
@@ -897,6 +946,16 @@ export const AuthApiFactory = function (configuration?: Configuration, basePath?
             return localVarFp.getShortLivedToken(request, options).then((request) => request(axios, basePath));
         },
         /**
+         * Refreshes a client app token
+         * @summary Refresh Client App Token
+         * @param {RefreshTokenRequest} request Refresh token request
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        refreshClientAppToken(request: RefreshTokenRequest, options?: RawAxiosRequestConfig): AxiosPromise<APICredentialsLoginResponse> {
+            return localVarFp.refreshClientAppToken(request, options).then((request) => request(axios, basePath));
+        },
+        /**
          * Refreshes a short lived token
          * @summary Refresh Short Lived Token
          * @param {RefreshTokenRequest} request Refresh token request
@@ -938,6 +997,18 @@ export class AuthApi extends BaseAPI {
      */
     public getShortLivedToken(request: APICredentialsLoginPayload, options?: RawAxiosRequestConfig) {
         return AuthApiFp(this.configuration).getShortLivedToken(request, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Refreshes a client app token
+     * @summary Refresh Client App Token
+     * @param {RefreshTokenRequest} request Refresh token request
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthApi
+     */
+    public refreshClientAppToken(request: RefreshTokenRequest, options?: RawAxiosRequestConfig) {
+        return AuthApiFp(this.configuration).refreshClientAppToken(request, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
