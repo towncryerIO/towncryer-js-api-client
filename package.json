@@ -15,9 +15,9 @@
     "@towncryerio/towncryer-js-api-client"
   ],
   "license": "Unlicense",
-  "main": "./dist/index.js",
-  "typings": "./dist/index.d.ts",
-  "module": "./dist/esm/index.js",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "module": "dist/esm/index.js",
   "sideEffects": false,
   "scripts": {
     "build:cjs": "tsc",
